@@ -10,6 +10,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var canvas = document.getElementById("app");
 var stage = engine.run(canvas);
+//SVN : 以文件为核心
+//GIT : 以版本为核心
+// 命令行工具
+// shell / bat
+// c / go 
+// VM + script (Node + TypeScript) -- (egret create / egret build)
+//npm link -> engine
+//engine config
 engine.Ticker.getInstance().register(function (deltaTime) {
     //console.log(deltaTime);
     button.y = button.y + deltaTime / 10;
@@ -79,8 +87,6 @@ player.image.src = "player1.jpg";
 player.image.width = 128;
 player.image.height = 128;
 var playerTween = new engine.Tween(player, moveData, idleData);
-stage.addEventListener("onclick", function (e) {
-}, this, false);
 //图片
 var avater = new engine.Bitmap();
 avater.image.src = "avater.jpg";
