@@ -63,6 +63,7 @@ declare namespace engine {
         private object;
         constructor(object: engine.MovieClip, moveData: engine.MovieClipData, idleData: engine.MovieClipData);
         moveTo(targetX: number, targetY: number): void;
+        moveToStepByStep(point: Point[]): void;
         removeTween(): void;
     }
 }

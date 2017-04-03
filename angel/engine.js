@@ -26,6 +26,7 @@ var engine;
             this.height = 1;
         }
         Rectangle.prototype.isPointInRectangle = function (point) {
+            console.log("2222");
             var rect = this;
             if (point.x < rect.width + rect.x &&
                 point.y < rect.height + rect.y &&
@@ -217,6 +218,27 @@ var engine;
                     object.y = object.y + object.moveSpeed;
                 }
             }, 50);
+        };
+        Tween.prototype.moveToStepByStep = function (point) {
+            var _this = this;
+            var object = this.object;
+            var i = 1;
+            var stepMoveInterval = setInterval(function () {
+                if (!object.isMove) {
+                    _this.moveTo(point[i].x, point[i].y);
+                }
+                if (object.x == point[point.length - 1].x && object.y == object[point.length - 1].y) {
+                    clearInterval(stepMoveInterval);
+                }
+                console.log("playerX: " + object.x);
+                console.log("playerY: " + object.y);
+                console.log("targetX: " + point[i].x);
+                console.log("targetY: " + point[i].y);
+                if (i < point.length - 1 && object.x == point[i].x && object.y == point[i].y) {
+                    i++;
+                }
+                console.log("i:" + i);
+            }, 200);
         };
         Tween.prototype.removeTween = function () {
             this.object.isMove = false;

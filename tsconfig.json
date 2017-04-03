@@ -6,6 +6,6 @@
 	},
 	"include": [
 		"src/**/*.ts",
-		"engine/**/*.d.ts"
+		"angel/**/*.d.ts"
 	]
 }

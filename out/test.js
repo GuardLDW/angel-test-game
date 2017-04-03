@@ -156,31 +156,11 @@ var MyMap = (function (_super) {
         _this.addEventListener("onclick", function (e) {
             grid.setStartNode(Math.floor(player.x / MyMap.SIZE), Math.floor(player.y / MyMap.SIZE));
             grid.setEndNode(Math.floor(e.offsetX / MyMap.SIZE), Math.floor(e.offsetY / MyMap.SIZE));
-            var stepMoveInterval;
             //有路
             if (aStar.findPath(grid)) {
                 console.log("自动寻路开始");
                 var path = aStar._path;
-                var i = 0;
-                stepMoveInterval = setInterval(function () {
-                    if (!player.isMove) {
-                        playerTween.moveTo(path[i].x, path[i].y);
-                    }
-                    else {
-                        playerTween.removeTween();
-                    }
-                    if (player.x == path[path.length - 1].x && player.y == path[path.length - 1].y) {
-                        clearInterval(stepMoveInterval);
-                    }
-                    console.log("playerX:" + player.x);
-                    console.log("playerY:" + player.y);
-                    console.log("X:" + path[i].x);
-                    console.log("Y:" + path[i].y);
-                    if (i < path.length - 1 && player.x == path[i].x && player.y == path[i].y) {
-                        i++;
-                    }
-                    console.log("i:" + i);
-                }, 500);
+                playerTween.moveToStepByStep(path);
             }
             else {
                 console.log("自动寻路结束");
