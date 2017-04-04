@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var canvas = document.getElementById("app");
-var stage = engine.run(canvas);
+var stage = angel.run(canvas);
 //SVN : 以文件为核心
 //GIT : 以版本为核心
 // 命令行工具
@@ -18,17 +18,17 @@ var stage = engine.run(canvas);
 // VM + script (Node + TypeScript) -- (egret create / egret build)
 //npm link -> engine
 //engine config
-engine.Ticker.getInstance().register(function (deltaTime) {
+angel.Ticker.getInstance().register(function (deltaTime) {
     //console.log(deltaTime);
     button.y = button.y + deltaTime / 10;
 });
 //第二层容器
-var panel = new engine.DisplayObjectContainer();
+var panel = new angel.DisplayObjectContainer();
 panel.x = 120;
 panel.y = 50;
 panel.alpha = 0.5;
 //按钮
-var button = new engine.Button();
+var button = new angel.Button();
 button.x = 10;
 button.y = 30;
 button.text = "点我";
@@ -38,13 +38,13 @@ button.enable = true;
 button.addEventListener("onclick", function () {
     button.text = "欧尼酱";
 }, this, false);
-var word2 = new engine.TextField();
+var word2 = new angel.TextField();
 word2.text = "第二层容器";
 word2.color = "#0000FF";
 word2.size = 30;
-var list = new engine.DisplayObjectContainer();
+var list = new angel.DisplayObjectContainer();
 list.addEventListener("onmousemove", function (e) {
-    var dy = engine.currentY - engine.lastY;
+    var dy = angel.currentY - angel.lastY;
     list.y = list.y + dy;
 }, this, false);
 //帧动画
@@ -82,13 +82,13 @@ var moveData = {
         { "image": "playerMove2.jpg" }
     ]
 };
-var player = new engine.MovieClip(idleData);
+var player = new angel.MovieClip(idleData);
 player.image.src = "player1.jpg";
 player.image.width = 128;
 player.image.height = 128;
-var playerTween = new engine.Tween(player, moveData, idleData);
+var playerTween = new angel.Tween(player, moveData, idleData);
 //图片
-var avater = new engine.Bitmap();
+var avater = new angel.Bitmap();
 avater.image.src = "avater.jpg";
 //加载完图片资源
 avater.image.onload = function () {
@@ -169,7 +169,7 @@ var MyMap = (function (_super) {
         return _this;
     }
     return MyMap;
-}(engine.DisplayObjectContainer));
+}(angel.DisplayObjectContainer));
 //width:5*8,height:128*8
 MyMap.SIZE = 128;
 //每一个网格
@@ -188,7 +188,7 @@ var MapNode = (function (_super) {
         return _this;
     }
     return MapNode;
-}(engine.Bitmap));
+}(angel.Bitmap));
 //整个地图的所有网格，控制所有的节点
 var Grid = (function () {
     function Grid(numCols, numRows) {

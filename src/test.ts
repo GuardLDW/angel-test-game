@@ -1,5 +1,5 @@
 var canvas = document.getElementById("app") as HTMLCanvasElement;
-var stage = engine.run(canvas);
+var stage = angel.run(canvas);
 
 //SVN : 以文件为核心
 //GIT : 以版本为核心
@@ -13,7 +13,7 @@ var stage = engine.run(canvas);
 
 //engine config
 
-engine.Ticker.getInstance().register((deltaTime) => {
+angel.Ticker.getInstance().register((deltaTime) => {
 
     //console.log(deltaTime);
     button.y = button.y + deltaTime / 10;
@@ -21,13 +21,13 @@ engine.Ticker.getInstance().register((deltaTime) => {
 });
 
 //第二层容器
-var panel = new engine.DisplayObjectContainer();
+var panel = new angel.DisplayObjectContainer();
 panel.x = 120;
 panel.y = 50;
 panel.alpha = 0.5;
 
 //按钮
-var button = new engine.Button();
+var button = new angel.Button();
 button.x = 10;
 button.y = 30;
 button.text = "点我";
@@ -40,22 +40,22 @@ button.addEventListener("onclick", ()=>{
 
 },this,false);
 
-var word2 = new engine.TextField();
+var word2 = new angel.TextField();
 word2.text = "第二层容器"
 word2.color = "#0000FF"
 word2.size = 30;
 
-var list = new engine.DisplayObjectContainer();
+var list = new angel.DisplayObjectContainer();
 list.addEventListener("onmousemove", (e : MouseEvent) =>{
 
-    var dy = engine.currentY - engine.lastY;
+    var dy = angel.currentY - angel.lastY;
     list.y = list.y + dy;
 
 }, this, false);
 
 
 //帧动画
-var idleData : engine.MovieClipData = {
+var idleData : angel.MovieClipData = {
 
     name : "111",
 
@@ -77,7 +77,7 @@ var idleData : engine.MovieClipData = {
 
 }
 
-var moveData : engine.MovieClipData = {
+var moveData : angel.MovieClipData = {
 
     name : "111",
 
@@ -99,16 +99,16 @@ var moveData : engine.MovieClipData = {
 
 }
 
-var player = new engine.MovieClip(idleData);
+var player = new angel.MovieClip(idleData);
 player.image.src = "player1.jpg";
 player.image.width = 128;
 player.image.height = 128;
 
-var playerTween = new engine.Tween(player, moveData, idleData);
+var playerTween = new angel.Tween(player, moveData, idleData);
 
 
 //图片
-var avater = new engine.Bitmap();
+var avater = new angel.Bitmap();
 avater.image.src = "avater.jpg";
 
 
@@ -178,7 +178,7 @@ var config = [
 
 
 
-class MyMap extends engine.DisplayObjectContainer{
+class MyMap extends angel.DisplayObjectContainer{
 
     //width:5*8,height:128*8
     public static SIZE = 128;
@@ -236,7 +236,7 @@ class MyMap extends engine.DisplayObjectContainer{
 
 
 //每一个网格
-class MapNode extends engine.Bitmap{
+class MapNode extends angel.Bitmap{
 
     public girdX : number;
     public girdY : number;
