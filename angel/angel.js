@@ -26,7 +26,6 @@ var angel;
             this.height = 1;
         }
         Rectangle.prototype.isPointInRectangle = function (point) {
-            console.log("333");
             var rect = this;
             if (point.x < rect.width + rect.x &&
                 point.y < rect.height + rect.y &&
